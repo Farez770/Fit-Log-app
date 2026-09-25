@@ -1,13 +1,19 @@
 "use client";
 import EmptyPlanState from "@/components/shared/EmptyPlanState";
 import MyPlanInfoSec from "@/components/shared/MyPlanInfoSec";
+import MyPlanWorkoutCard from "@/components/shared/MyPlanWorkoutCard";
+import { FitlogContext } from "@/context/FitlogContextProvider";
 import { IWorkOutType } from "@/types/type";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 const MyPlanPage = () => {
   const [sortBy, setSortBy] = useState<"duration" | "calories" | "rating">(
     "duration",
   );
+  const { plan, saved } = useContext(FitlogContext) as {
+    plan: IWorkOutType[];
+    saved: IWorkOutType[];
+  };
 
   const sortWorkout = (workOut: IWorkOutType[]) => {
     const sortedWorkout = [...workOut];
@@ -23,8 +29,8 @@ const MyPlanPage = () => {
     return sortedWorkout;
   };
 
-  // const sortedTodaysPlan = sortWorkout();
-  // const sortedSavedWOrkout = sortWorkout();
+  const sortedTodaysPlan = sortWorkout(plan);
+  const sortedSavedWOrkout = sortWorkout(saved);
 
   return (
     <section className="container mx-auto px-6 mt-10">
@@ -47,7 +53,7 @@ const MyPlanPage = () => {
           onChange={(e) =>
             setSortBy(e.target.value as "duration" | "calories" | "rating")
           }
-          defaultValue="Duration"
+          // defaultValue="Duration"
           className="select select-md w-[160px]"
         >
           {/* <option disabled={true}>Duration</option> */}
@@ -66,9 +72,23 @@ const MyPlanPage = () => {
           name="my_tabs_6"
           className="tab mb-2 border checked:bg-[#2B303D] mr-2"
           aria-label="Today's Plan"
+          defaultChecked
         />
         <div className="tab-content bg-base-100 border-base-300 p-6 ">
-          <EmptyPlanState />
+          {sortedTodaysPlan.length > 0 ? (
+            <div className="space-y-2">
+              {sortedTodaysPlan.map((workout) => (
+                <MyPlanWorkoutCard
+                  key={workout.id}
+                  workout={workout}
+                  type="plan"
+                />
+              ))}
+            </div>
+          ) : (
+            <EmptyPlanState />
+          )}
+          {/* <EmptyPlanState /> */}
         </div>
 
         <input
@@ -76,10 +96,24 @@ const MyPlanPage = () => {
           name="my_tabs_6"
           className="tab mb-2 border  checked:bg-[#2B303D]  w-[120px]"
           aria-label="Saved"
-          defaultChecked
+          // defaultChecked
         />
         <div className="tab-content bg-base-100 border-base-300 p-6">
-          <EmptyPlanState />
+          {sortedSavedWOrkout.length > 0 ? (
+            <div className="space-y-2">
+              {sortedSavedWOrkout.map((workout) => (
+                <MyPlanWorkoutCard
+                  key={workout.id}
+                  workout={workout}
+                  type="saved"
+                />
+              ))}
+            </div>
+          ) : (
+            <EmptyPlanState />
+          )}
+
+          {/* <EmptyPlanState /> */}
         </div>
       </div>
     </section>

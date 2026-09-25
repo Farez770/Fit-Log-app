@@ -8,7 +8,12 @@ export default function Home() {
     <div>
       <HomeBanner />
       <Suspense
-        fallback={<p className="text-center text-2xl ">Data is loading...</p>}
+        fallback={
+          <p className="text-center text-2xl ">
+            Workout Library Data is loading...
+            <span className="loading loading-spinner text-success"></span>
+          </p>
+        }
       >
         <WorkoutLibraray />
       </Suspense>

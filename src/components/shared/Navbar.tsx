@@ -174,7 +174,7 @@ const Navbar = () => {
                 <span>Plan</span>
 
                 <span className=" flex h-6 w-6 items-center justify-center rounded-full bg-[#c8ff00] text-xs font-bold text-black">
-                  0
+                  {plan.length}
                 </span>
               </Link>
             </li>
@@ -190,7 +190,7 @@ const Navbar = () => {
                 <span>Saved</span>
 
                 <span className=" flex h-6 w-6 items-center justify-center rounded-full border border-[#373941] text-xs text-[#aeb0b8]">
-                  0
+                  {saved.length}
                 </span>
               </Link>
             </li>
