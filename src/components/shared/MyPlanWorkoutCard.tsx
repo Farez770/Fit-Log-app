@@ -5,18 +5,37 @@ import Link from "next/link";
 import { FaClock, FaFire, FaTimes, FaCheck, FaStar } from "react-icons/fa";
 
 import { IWorkOutType } from "@/types/type";
+import { useContext } from "react";
+import { FitlogContext } from "@/context/FitlogContextProvider";
+import { wrap } from "module";
+import { toast } from "react-toastify";
 
 interface IMyPlanWorkoutCardProps {
   workout: IWorkOutType;
   type: "plan" | "saved";
-  removeWorkout: (id: number) => void;
 }
 
-const MyPlanWorkoutCard = ({
-  workout,
-  type,
-  removeWorkout,
-}: IMyPlanWorkoutCardProps) => {
+const MyPlanWorkoutCard = ({ workout, type }: IMyPlanWorkoutCardProps) => {
+  const context = useContext(FitlogContext);
+
+  if (!context) {
+    throw new Error(
+      "MyPlanWorkoutCard must be used inside FitlogContextProvider",
+    );
+  }
+
+  const { removeFromPlan, removeFromSaved } = context;
+
+  const handleRemove = () => {
+    if (type == "plan") {
+      removeFromPlan(workout.id);
+      toast.success(`${workout.name} removed from today's plan!`);
+    } else {
+      removeFromSaved(workout.id);
+      toast.success(`${workout.name} removed from saved workouts!`);
+    }
+  };
+
   return (
     <article className="flex w-full items-center gap-4 rounded-2xl border border-[#292c34] bg-[#12151b] p-4 transition-colors duration-200 hover:border-[#3a3e48] sm:gap-5 sm:p-5">
       {/* ================= IMAGE ================= */}
@@ -87,7 +106,7 @@ const MyPlanWorkoutCard = ({
 
         {/* Remove */}
         <button
-          onClick={() => removeWorkout(workout.id)}
+          onClick={handleRemove}
           type="button"
           className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center self-center rounded-full text-[#737985]  transition hover:bg-[#272a31] hover:text-red-400"
           aria-label={`Remove ${workout.name}`}

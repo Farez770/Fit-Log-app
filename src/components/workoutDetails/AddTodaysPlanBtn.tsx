@@ -5,6 +5,7 @@ import { FaRegCalendarCheck } from "react-icons/fa";
 
 import { FitlogContext } from "@/context/FitlogContextProvider";
 import { IWorkOutType } from "@/types/type";
+import { toast } from "react-toastify";
 
 interface IAddTodaysPlanProps {
   workout: IWorkOutType;
@@ -22,7 +23,10 @@ const AddTodaysPlanBtn = ({ workout }: IAddTodaysPlanProps) => {
   const { addToPlan } = context;
 
   const handleAddToPlan = () => {
-    addToPlan(workout);
+    const added = addToPlan(workout);
+    if (added) {
+      toast.success(`${workout.name} added to today's plan`);
+    }
   };
 
   return (

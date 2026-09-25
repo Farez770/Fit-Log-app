@@ -4,12 +4,13 @@ import React, { useContext } from "react";
 import { IWorkOutType } from "../../types/type";
 import { FitlogContext } from "@/context/FitlogContextProvider";
 import { FaRegBookmark } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 interface IAddTodaysPlanProps {
   workout: IWorkOutType;
 }
 
-const SavedWorkoutBtn = (workout: IAddTodaysPlanProps) => {
+const SavedWorkoutBtn = ({ workout }: IAddTodaysPlanProps) => {
   const context = useContext(FitlogContext);
 
   if (!context) {
@@ -20,7 +21,10 @@ const SavedWorkoutBtn = (workout: IAddTodaysPlanProps) => {
   const { addToSaved } = context;
 
   const handleSavedWorkout = () => {
-    addToSaved(workout.workout);
+    const added = addToSaved(workout);
+    if (added) {
+      toast.success(`${workout.name} is Saved for later!`);
+    }
   };
 
   return (

@@ -36,16 +36,6 @@ const MyPlanPage = () => {
   const sortedTodaysPlan = sortWorkout(plan);
   const sortedSavedWOrkout = sortWorkout(saved);
 
-  const [selectedWorkout, setSelectedWorkout] = useState<IWorkOutType[]>([]);
-
-  const handleRemoveWorkout = (id: number) => {
-    setSelectedWorkout((prevWorkout) =>
-      prevWorkout.filter((workout) => workout.id !== id),
-    );
-
-    toast.info(`${id} Remove from the Today's Plan`);
-  };
-
   return (
     <section className="container mx-auto px-6 mt-10">
       <div>
@@ -107,7 +97,6 @@ const MyPlanPage = () => {
                     key={workout.id}
                     workout={workout}
                     type="plan"
-                    removeWorkout={handleRemoveWorkout}
                   />
                 ))}
               </div>
@@ -121,7 +110,6 @@ const MyPlanPage = () => {
                   key={workout.id}
                   workout={workout}
                   type="saved"
-                  removeWorkout={handleRemoveWorkout}
                 />
               ))}
             </div>
