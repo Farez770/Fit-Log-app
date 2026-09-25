@@ -20,9 +20,11 @@ const HomeBanner = () => {
             into today&apos;s plan, and watch the week&apos;s work add up.
           </p>
 
-          <button className="px-5 py-3 text-sm font-bold text-black bg-[#C2F800] rounded sm:px-6 sm:text-base">
-            BROWSE WORKOUTS
-          </button>
+          <a href="#library">
+            <button className="px-5 py-3 text-sm font-bold text-black bg-[#C2F800] rounded sm:px-6 sm:text-base cursor-pointer">
+              BROWSE WORKOUTS
+            </button>
+          </a>
         </div>
 
         {/* right part */}

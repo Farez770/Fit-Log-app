@@ -3,21 +3,29 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import logo from "@/assets/logo.png";
+import { FitlogContext } from "@/context/FitlogContextProvider";
 
 const Navbar = () => {
   const pathname = usePathname();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const context = useContext(FitlogContext);
+  if (!context) {
+    throw new Error("Navbar must be used inside FitlogContextProvider");
+  }
+
+  const { plan, saved } = context;
+
   // Active link
   const isWorkoutActive = pathname === "/";
   const isMyPlanActive = pathname === "/my-plan";
 
   return (
-    <nav className="w-full border-b border-[#202125] bg-[#0d0e10] text-white">
+    <nav className="w-full border-b border-[#202125]   bg-transparent backdrop-blur-md  text-white sticky top-0 left-0 z-10">
       <div className="mx-auto flex h-18 max-w-[1650px] items-center justify-between px-3 sm:px-5 md:px-4 lg:px-8">
         <Link
           href="/"
@@ -81,7 +89,7 @@ const Navbar = () => {
             <span>Plan</span>
 
             <span className=" flex h-6 w-6 items-center justify-center rounded-full bg-[#c8ff00] text-[11px] font-bold text-black">
-              0
+              {plan.length}
             </span>
           </Link>
 
@@ -94,7 +102,7 @@ const Navbar = () => {
             <span>Saved</span>
 
             <span className=" flex h-6 w-6 items-center justify-center rounded-full border border-[#373941] text-[11px] text-[#aeb0b8]">
-              0
+              {saved.length}
             </span>
           </Link>
         </div>

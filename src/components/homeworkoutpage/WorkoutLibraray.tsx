@@ -12,7 +12,7 @@ const WorkoutLibraray = async () => {
   const workData = await getWorkoutData();
   console.log(workData, "Workout data");
   return (
-    <div className="container mx-auto px-6">
+    <div className="container mx-auto px-6" id="library">
       <div className="text-center md:text-left mb-8">
         <h1 className="text-xl md:text-2xl lg:text-3xl font-bold ">
           THE LIBRARY
@@ -21,7 +21,7 @@ const WorkoutLibraray = async () => {
           Twelve lifts covering every major muscle group.
         </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6 lg:gap-7">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-5 sm:gap-6 lg:gap-7">
         {workData.map((workout: IWorkOutType) => {
           return <WorkoutCards key={workout.id} workout={workout} />;
         })}
