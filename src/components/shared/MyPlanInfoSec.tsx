@@ -1,26 +1,31 @@
 "use client";
 
 import { useContext } from "react";
-
 import { FitlogContext } from "@/context/FitlogContextProvider";
 
-const MyPlanInfoSec = () => {
+interface IMyPlanInfoSecProps {
+  activeTab: "plan" | "saved";
+}
+
+const MyPlanInfoSec = ({ activeTab }: IMyPlanInfoSecProps) => {
   const context = useContext(FitlogContext);
 
   if (!context) {
     throw new Error("MyPlanInfoSec must be used inside FitlogContextProvider");
   }
 
-  const { plan } = context;
+  const { plan, saved } = context;
 
-  const totalExercises = plan.length;
+  const currentWorkouts = activeTab === "plan" ? plan : saved;
 
-  const totalMinutes = plan.reduce(
+  const totalExercises = currentWorkouts.length;
+
+  const totalMinutes = currentWorkouts.reduce(
     (total, workout) => total + workout.duration,
     0,
   );
 
-  const totalCalories = plan.reduce(
+  const totalCalories = currentWorkouts.reduce(
     (total, workout) => total + workout.caloriesBurned,
     0,
   );

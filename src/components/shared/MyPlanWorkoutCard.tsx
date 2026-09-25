@@ -9,9 +9,14 @@ import { IWorkOutType } from "@/types/type";
 interface IMyPlanWorkoutCardProps {
   workout: IWorkOutType;
   type: "plan" | "saved";
+  removeWorkout: (id: number) => void;
 }
 
-const MyPlanWorkoutCard = ({ workout, type }: IMyPlanWorkoutCardProps) => {
+const MyPlanWorkoutCard = ({
+  workout,
+  type,
+  removeWorkout,
+}: IMyPlanWorkoutCardProps) => {
   return (
     <article className="flex w-full items-center gap-4 rounded-2xl border border-[#292c34] bg-[#12151b] p-4 transition-colors duration-200 hover:border-[#3a3e48] sm:gap-5 sm:p-5">
       {/* ================= IMAGE ================= */}
@@ -82,6 +87,7 @@ const MyPlanWorkoutCard = ({ workout, type }: IMyPlanWorkoutCardProps) => {
 
         {/* Remove */}
         <button
+          onClick={() => removeWorkout(workout.id)}
           type="button"
           className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center self-center rounded-full text-[#737985]  transition hover:bg-[#272a31] hover:text-red-400"
           aria-label={`Remove ${workout.name}`}
