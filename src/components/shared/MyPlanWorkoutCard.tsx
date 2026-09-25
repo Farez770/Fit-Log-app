@@ -36,6 +36,11 @@ const MyPlanWorkoutCard = ({ workout, type }: IMyPlanWorkoutCardProps) => {
     }
   };
 
+  const handleMarkAsDone = () => {
+    toast.success("The workout is Done!");
+    console.log("Work is done");
+  };
+
   return (
     <article className="flex w-full items-center gap-4 rounded-2xl border border-[#292c34] bg-[#12151b] p-4 transition-colors duration-200 hover:border-[#3a3e48] sm:gap-5 sm:p-5">
       {/* ================= IMAGE ================= */}
@@ -96,6 +101,7 @@ const MyPlanWorkoutCard = ({ workout, type }: IMyPlanWorkoutCardProps) => {
         {/* Mark as Done */}
         {type === "plan" && (
           <button
+            onClick={handleMarkAsDone}
             type="button"
             className="flex cursor-pointer items-center justify-center gap-1.5 rounded-full bg-[#C2F800] px-4 py-2 text-xs md:text-lg font-bold text-black transition hover:bg-[#d4ff3d]"
           >
