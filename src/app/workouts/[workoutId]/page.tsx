@@ -1,5 +1,5 @@
 import { IWorkOutType } from "@/types/type";
-import { FaRegBookmark, FaRegCalendarCheck } from "react-icons/fa";
+// import { FaRegBookmark, FaRegCalendarCheck } from "react-icons/fa";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import AddTodaysPlan from "@/components/workoutDetails/AddTodaysPlanBtn";
