@@ -5,7 +5,7 @@ import MyPlanWorkoutCard from "@/components/shared/MyPlanWorkoutCard";
 import { FitlogContext } from "@/context/FitlogContextProvider";
 import { IWorkOutType } from "@/types/type";
 import React, { useContext, useState } from "react";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 const MyPlanPage = () => {
   const [sortBy, setSortBy] = useState<"duration" | "calories" | "rating">(
@@ -75,7 +75,7 @@ const MyPlanPage = () => {
         <button
           type="button"
           onClick={() => setActiveTab("plan")}
-          className={`tab mb-2 border mr-2 ${activeTab === "plan" ? "bg-[#2B303D]" : ""}`}
+          className={`tab mb-2 border mr-2 ${activeTab === "plan" ? "bg-[#3b3e48] border-b-[#C2F800]" : ""}`}
         >
           Today&apos;s Plan
         </button>
@@ -83,7 +83,7 @@ const MyPlanPage = () => {
         <button
           type="button"
           onClick={() => setActiveTab("saved")}
-          className={`tab mb-2 border w-[120px] ${activeTab === "saved" ? "bg-[#2B303D]" : ""}`}
+          className={`tab mb-2 border w-[120px] ${activeTab === "saved" ? "bg-[#3b3e48] border-b-[#C2F800]" : ""}`}
         >
           Saved
         </button>

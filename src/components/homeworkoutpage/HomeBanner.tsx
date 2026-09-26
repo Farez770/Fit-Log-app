@@ -4,8 +4,8 @@ import heroimg from "@/assets/banner.png";
 
 const HomeBanner = () => {
   return (
-    <section className="container mx-auto mt-8 px-4 sm:mt-10 sm:px-5 md:mt-12 md:px-6 md:mb-16">
-      <div className="flex flex-col items-center justify-between gap-10 rounded-2xl bg-[#222630] px-5 py-8 sm:px-8 sm:py-10 md:flex-row md:gap-6 md:px-6 md:py-12 ">
+    <section className="container mx-auto mt-8 px-4 sm:mt-10 sm:px-5 md:mt-12 md:px-6 md:mb-16 mb-10">
+      <div className="flex flex-col text-center md:text-left items-center justify-between gap-10 rounded-2xl bg-[#222630] px-5 py-8 sm:px-8 sm:py-10 md:flex-row md:gap-6 md:px-6 md:py-12 ">
         <div className="w-full ">
           <h2 className="text-sm font-bold text-[#C2F800] sm:text-base">
             WORKOUT LIBRARY

@@ -25,7 +25,7 @@ const Navbar = () => {
   const isMyPlanActive = pathname === "/my-plan";
 
   return (
-    <nav className="w-full border-b border-[#202125]   bg-transparent backdrop-blur-md  text-white sticky top-0 left-0 z-10">
+    <nav className="w-full border-b border-[#202125]   bg-transparent backdrop-blur-md  text-white sticky top-0 left-0 z-10 container mx-auto px-6">
       <div className="mx-auto flex h-18 max-w-[1650px] items-center justify-between px-3 sm:px-5 md:px-4 lg:px-8">
         <Link
           href="/"
@@ -36,7 +36,7 @@ const Navbar = () => {
             alt="FITLOG logo"
             width={32}
             height={32}
-            className="h-7 w-7 md:h-7 md:w-7 lg:h-8 lg:w-8"
+            className="h-6 w-6 md:h-7 md:w-7 lg:h-8 lg:w-8"
           />
 
           <h2 className=" text-lg font-bold tracking-[1px] md:text-base lg:text-xl">
@@ -79,7 +79,8 @@ const Navbar = () => {
           </li>
         </ul>
 
-        <div className=" hidden items-center md:flex md:gap-2 lg:gap-7">
+        <div className="flex items-center pl-6 pr-2 md:pr-0 md:pl-0  gap-4 ">
+          {/* <div className=" hidden items-center md:flex md:gap-2 lg:gap-7"> */}
           {/* PLAN */}
 
           <Link
@@ -124,7 +125,6 @@ const Navbar = () => {
         <div className=" border-t border-[#202125] bg-[#0d0e10] px-4 py-4 md:hidden">
           <ul className="flex flex-col gap-2">
             {/* WORKOUTS */}
-
             <li>
               <Link
                 href="/"
@@ -140,9 +140,7 @@ const Navbar = () => {
                 Workouts
               </Link>
             </li>
-
             {/* MY PLAN */}
-
             <li>
               <Link
                 href="/my-plan"
@@ -158,14 +156,10 @@ const Navbar = () => {
                 My Plan
               </Link>
             </li>
-
             {/* DIVIDER */}
-
-            <li className="my-1 h-px bg-[#202125]" />
-
+            {/* <li className="my-1 h-px bg-[#202125]" /> */}
             {/* PLAN */}
-
-            <li>
+            {/* <li>
               <Link
                 href="/my-plan"
                 onClick={() => setIsMenuOpen(false)}
@@ -177,11 +171,9 @@ const Navbar = () => {
                   {plan.length}
                 </span>
               </Link>
-            </li>
-
+            </li> */}
             {/* SAVED */}
-
-            <li>
+            {/* <li>
               <Link
                 href="/my-plan"
                 onClick={() => setIsMenuOpen(false)}
@@ -193,7 +185,7 @@ const Navbar = () => {
                   {saved.length}
                 </span>
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       )}

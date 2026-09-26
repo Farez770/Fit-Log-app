@@ -1,9 +1,10 @@
 import { IWorkOutType } from "@/types/type";
 // import { FaRegBookmark, FaRegCalendarCheck } from "react-icons/fa";
 import Image from "next/image";
-import { notFound } from "next/navigation";
+// import { notFound } from "next/navigation";
 import AddTodaysPlan from "@/components/workoutDetails/AddTodaysPlanBtn";
 import SavedWorkout from "@/components/workoutDetails/SavedWorkoutBtn";
+import NotFound from "@/app/not-found";
 
 const getWorkoutData = async (): Promise<IWorkOutType[]> => {
   const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
@@ -21,11 +22,11 @@ const Page = async ({ params }: { params: Promise<{ workoutId: string }> }) => {
   const workoutData = await getWorkoutData();
 
   const workout = workoutData.find(
-    (item) => String(item.id) === String(workoutId),
+    (excerxise) => String(excerxise.id) === String(workoutId),
   );
 
   if (!workout) {
-    notFound();
+    return NotFound();
   }
 
   return (

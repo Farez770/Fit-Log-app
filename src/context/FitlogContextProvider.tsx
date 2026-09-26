@@ -24,11 +24,20 @@ const FitlogContextProvider = ({ children }: { children: ReactNode }) => {
 
   // Add workout to today's plan
   const addToPlan = (workout: IWorkOutType) => {
-    const alreadyExists = plan.some((item) => item.id === workout.id);
+    if (plan.length >= 5) {
+      toast.warning(`You have a plan of 5 workouts per day!`, {
+        theme: "dark",
+      });
+      return false;
+    }
+
+    const alreadyExists = plan.some((excercise) => excercise.id === workout.id);
 
     if (alreadyExists) {
       // toast.success("Workout already exists in today's plan");
-      toast.info(`${workout.name} is already in today's plan!`);
+      toast.info(`${workout.name} is already in today's plan!`, {
+        theme: "dark",
+      });
       return false;
     }
 
@@ -48,7 +57,9 @@ const FitlogContextProvider = ({ children }: { children: ReactNode }) => {
     const alreadySaved = saved.some((item) => item.id === workout.id);
 
     if (alreadySaved) {
-      toast.success("Workout is already saved for later");
+      toast.success(`Workout is already saved for later`, {
+        theme: "dark",
+      });
       return false;
     }
 

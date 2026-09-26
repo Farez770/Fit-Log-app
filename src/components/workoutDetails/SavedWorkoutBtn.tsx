@@ -23,7 +23,9 @@ const SavedWorkoutBtn = ({ workout }: IAddTodaysPlanProps) => {
   const handleSavedWorkout = () => {
     const added = addToSaved(workout);
     if (added) {
-      toast.success(`${workout.name} is Saved for later!`);
+      toast.success(`${workout.name} is Saved for later!`, {
+        theme: "dark",
+      });
     }
   };
 
@@ -31,7 +33,7 @@ const SavedWorkoutBtn = ({ workout }: IAddTodaysPlanProps) => {
     <div>
       <button
         onClick={() => handleSavedWorkout()}
-        className="flex items-center justify-center gap-2 rounded-lg border border-[#373a43] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#191c22] sm:flex-1 cursor-pointer"
+        className=" flex items-center justify-center gap-2 rounded-lg border border-[#373a43] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#191c22] sm:flex-1 cursor-pointer"
       >
         <FaRegBookmark />
         Save for later

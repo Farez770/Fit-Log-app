@@ -9,7 +9,7 @@ export default function Home() {
       <HomeBanner />
       <Suspense
         fallback={
-          <p className="text-center text-2xl ">
+          <p className="text-center text-base md:text-2xl ">
             Workout Library Data is loading...
             <span className="loading loading-spinner text-success"></span>
           </p>

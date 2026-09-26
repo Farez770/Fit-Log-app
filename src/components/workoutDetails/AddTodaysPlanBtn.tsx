@@ -20,21 +20,25 @@ const AddTodaysPlanBtn = ({ workout }: IAddTodaysPlanProps) => {
     );
   }
 
-  const { addToPlan } = context;
+  const { plan, addToPlan } = context;
 
   const handleAddToPlan = () => {
     const added = addToPlan(workout);
     if (added) {
-      toast.success(`${workout.name} added to today's plan`);
+      toast.success(`${workout.name} Added to today's plan`, { theme: "dark" });
     }
   };
 
   return (
     <button
       onClick={handleAddToPlan}
+      // disabled={plan.length >= 5}
       className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#C2F800] px-5 py-3 text-sm font-bold text-black transition hover:bg-[#d0ff33] sm:flex-1"
     >
       <FaRegCalendarCheck />
+      {/* {plan.length >= 5
+        ? `Plan is Full `
+        : "Add to today's plan"} */}
       Add to today&apos;s plan
     </button>
   );

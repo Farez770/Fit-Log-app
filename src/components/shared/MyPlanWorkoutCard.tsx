@@ -29,10 +29,14 @@ const MyPlanWorkoutCard = ({ workout, type }: IMyPlanWorkoutCardProps) => {
   const handleRemove = () => {
     if (type == "plan") {
       removeFromPlan(workout.id);
-      toast.success(`${workout.name} removed from today's plan!`);
+      toast.warning(`${workout.name} removed from today's plan!`, {
+        theme: "dark",
+      });
     } else {
       removeFromSaved(workout.id);
-      toast.success(`${workout.name} removed from saved workouts!`);
+      toast.success(`${workout.name} removed from saved workouts!`, {
+        theme: "dark",
+      });
     }
   };
 
