@@ -64,7 +64,7 @@ const FitlogContextProvider = ({ children }: { children: ReactNode }) => {
     const alreadySaved = saved.some((item) => item.id === workout.id);
 
     if (alreadySaved) {
-      toast.success(`Workout is already saved for later`, {
+      toast.info(`Workout is already saved for later`, {
         theme: "dark",
       });
       return false;
