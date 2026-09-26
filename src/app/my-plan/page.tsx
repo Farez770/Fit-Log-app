@@ -42,8 +42,9 @@ const MyPlanPage = () => {
         <h1 className="text-center md:text-left text-xl md:text-2xl lg:text-3xl font-bold">
           MY PLAN
         </h1>
-        <p className="text-[#8A92A0]">
-          Cap of five lifts for today. Finish them, then load more.
+        <p className="text-[#8A92A0] mt-2">
+          Cap of <span className="text-[#C2F800]">five</span> lifts for today.
+          Finish them, then load more.
         </p>
       </div>
       {/* ================ */}

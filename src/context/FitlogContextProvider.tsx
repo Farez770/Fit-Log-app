@@ -12,6 +12,8 @@ interface IFitlogContext {
   removeFromPlan: (workoutId: number) => void;
   addToSaved: (workout: IWorkOutType) => boolean;
   removeFromSaved: (workoutId: number) => void;
+  completeWorkout: number[];
+  markAsDone: (workoutId: number) => void;
 }
 
 export const FitlogContext = createContext<IFitlogContext | undefined>(
@@ -21,6 +23,11 @@ export const FitlogContext = createContext<IFitlogContext | undefined>(
 const FitlogContextProvider = ({ children }: { children: ReactNode }) => {
   const [plan, setPlan] = useState<IWorkOutType[]>([]);
   const [saved, setSaved] = useState<IWorkOutType[]>([]);
+  const [completeWorkout, setCompleteWorkout] = useState<number[]>([]);
+
+  const markAsDone = (workoutId: number) => {
+    setCompleteWorkout((prev) => [...prev, workoutId]);
+  };
 
   // Add workout to today's plan
   const addToPlan = (workout: IWorkOutType) => {
@@ -81,6 +88,8 @@ const FitlogContextProvider = ({ children }: { children: ReactNode }) => {
     removeFromPlan,
     addToSaved,
     removeFromSaved,
+    completeWorkout,
+    markAsDone,
   };
 
   return (

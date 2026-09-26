@@ -25,3 +25,21 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.Toastify__toast {
+  width: 400px;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .Toastify__toast {
+    width: 350px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .Toastify__toast {
+    width: calc(100vw - 30px);
+  }
+}

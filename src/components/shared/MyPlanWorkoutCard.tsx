@@ -24,7 +24,8 @@ const MyPlanWorkoutCard = ({ workout, type }: IMyPlanWorkoutCardProps) => {
     );
   }
 
-  const { removeFromPlan, removeFromSaved } = context;
+  const { removeFromPlan, removeFromSaved, markAsDone, completeWorkout } =
+    context;
 
   const handleRemove = () => {
     if (type == "plan") {
@@ -40,9 +41,11 @@ const MyPlanWorkoutCard = ({ workout, type }: IMyPlanWorkoutCardProps) => {
     }
   };
 
+  const isCompleted = completeWorkout.includes(workout.id);
+
   const handleMarkAsDone = () => {
-    toast.success("The workout is Done!");
-    console.log("Work is done");
+    markAsDone(workout.id);
+    toast.success(`${workout.name} marked as done!`, { theme: "dark" });
   };
 
   return (
@@ -110,7 +113,8 @@ const MyPlanWorkoutCard = ({ workout, type }: IMyPlanWorkoutCardProps) => {
             className="flex cursor-pointer items-center justify-center gap-1.5 rounded-full bg-[#C2F800] px-4 py-2 text-xs md:text-lg font-bold text-black transition hover:bg-[#d4ff3d]"
           >
             <FaCheck className="text-[10px]" />
-            <span>Mark as Done</span>
+            {isCompleted ? "Completed" : "Mark as Done"}
+            {/* <span>Mark as Done</span> */}
           </button>
         )}
 

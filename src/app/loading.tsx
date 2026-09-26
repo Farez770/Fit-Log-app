@@ -4,7 +4,7 @@ const loading = () => {
   return (
     <div>
       <h1 className="text-2xl text-center mt-4">
-        Workout Library Data is Loading ....
+        Loading workouts......
         <span className="loading loading-spinner text-success"></span>
       </h1>
     </div>
