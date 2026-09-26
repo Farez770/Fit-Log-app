@@ -93,11 +93,10 @@ FitLog is fully responsive and designed to work across:
 
 Clone the repository:
 
-`````bash
-
+```bash
 git clone https://github.com/Farez770/Fit-Log-app.git
+```
 
-````bash
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
@@ -112,7 +111,7 @@ yarn dev
 pnpm dev
 # or
 bun dev
-`````
+```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
